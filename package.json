@@ -1,0 +1,25 @@
+{
+  "name": "templates-playwright",
+  "version": "1.0.0",
+  "description": "Template repository for Playwright TypeScript",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:desktop": "npx playwright test --project Desktop",
+    "test:firefox": "npx playwright test --project firefox",
+    "test:chrome": "npx playwright test --project chrome",
+    "test:safari": "npx playwright test --project safari",
+    "test:mobile": "npx playwright test --project Mobile",
+    "ui": "npx playwright test --ui",
+    "results": "npx playwright show-report",
+    "ref:generate": "tsx ./.ref/scripts/device-list.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.2",
+    "@types/node": "^22.9.0",
+    "dotenv": "^16.4.5",
+    "tsx": "^4.19.2"
+  }
+}
