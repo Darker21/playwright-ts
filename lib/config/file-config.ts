@@ -70,21 +70,17 @@ function parseJSON<T>(jsonString: string): T {
  * @throws {ConfigError} Throws a ConfigError if the file cannot be read.
  */
 function readObject<T>(path: PathLike | string): T | undefined {
-    let content: string = "";
+    try {
+        const content = fs.readFileSync(path, "utf-8");
 
-    fs.readFile(path, "utf-8", (err, data) => {
-        if (err) {
-            throw new ConfigError(path as string);
+        if (!content) {
+            return undefined;
         }
 
-        content = data;
-    });
-
-    if (!content) {
-        return undefined;
+        return parseJSON<T>(content);
+    } catch (err) {
+        throw new ConfigError(path as string);
     }
-
-    return parseJSON<T>(content);
 }
 
 
